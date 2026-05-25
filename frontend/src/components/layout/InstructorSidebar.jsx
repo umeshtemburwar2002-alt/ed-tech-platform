@@ -1,6 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
 import { 
   LayoutDashboard, 
   PlusCircle, 
@@ -11,7 +12,7 @@ import {
   Settings, 
   LogOut 
 } from "lucide-react";
-import { useAuthStore } from "../../stores/authStore";
+import { performLogout } from "../../services/syncSupabaseSession";
 
 const navItems = [
   { id: "create-course", label: "Create Course", icon: PlusCircle, path: "/instructor/create-course" },
@@ -24,7 +25,9 @@ const navItems = [
 ];
 
 export default function InstructorSidebar() {
-  const { signOut } = useAuthStore();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const signOut = () => performLogout(dispatch, navigate);
 
   return (
     <aside className="w-64 bg-[#0A0A0F]/90 backdrop-blur-xl border-r border-white/[0.06] flex flex-col">
