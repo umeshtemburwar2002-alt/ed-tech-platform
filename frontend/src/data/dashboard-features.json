@@ -1,0 +1,85 @@
+{
+  "student": [],
+  "instructor": [
+    {
+      "title": "My Courses",
+      "description": "Manage, organize, and monitor created courses with quick edit and duplication features.",
+      "icon": "FaGraduationCap"
+    },
+    {
+      "title": "Add / Edit Courses",
+      "description": "Upload video, documents, quizzes, and interactive assignments with built-in plagiarism checks.",
+      "icon": "FaEdit"
+    },
+    {
+      "title": "View Student Progress",
+      "description": "Access individual and batch performance summaries with filtering options.",
+      "icon": "FaChartLine"
+    },
+    {
+      "title": "Analytics",
+      "description": "Track course completions, enrollments, ratings, watch time, and student engagement heatmaps.",
+      "icon": "FaChartBar"
+    },
+    {
+      "title": "Manage Tests & Assignments",
+      "description": "Create, schedule, auto-grade quizzes, and provide manual grading with feedback.",
+      "icon": "BsCalendarCheck"
+    },
+    {
+      "title": "Company Project Integration",
+      "description": "Assign, track, and evaluate live industry projects with submission status.",
+      "icon": "BsBriefcase"
+    },
+    {
+      "title": "Mock Interview Conduction",
+      "description": "Schedule, host, and assess mock interviews with recorded session playback.",
+      "icon": "FaUserTie"
+    },
+    {
+      "title": "Progress Report Generation",
+      "description": "Automated, customizable reports for individual students or groups.",
+      "icon": "FaFileAlt"
+    },
+    {
+      "title": "Live Class Scheduling",
+      "description": "Host interactive sessions with polls, whiteboards, breakout rooms, and auto-recording.",
+      "icon": "FaVideo"
+    },
+    {
+      "title": "Student Feedback & Ratings",
+      "description": "View feedback analytics, sentiment breakdown, and improvement suggestions.",
+      "icon": "FaStar"
+    },
+    {
+      "title": "Revenue & Earnings Tracking",
+      "description": "Monitor income, payout schedules, conversion rates, and sales funnels.",
+      "icon": "FaMoneyBillWave"
+    },
+    {
+      "title": "Collaboration Tools",
+      "description": "Co-create courses with other instructors, share teaching resources, and split revenues.",
+      "icon": "FaUsers"
+    },
+    {
+      "title": "Assignment & Test Analytics",
+      "description": "See difficulty ratings, average scores, and question-level performance.",
+      "icon": "FaChartPie"
+    },
+    {
+      "title": "Marketing Tools",
+      "description": "Email campaigns, coupon creation, and social media sharing for course promotion.",
+      "icon": "FaBullhorn"
+    },
+    {
+      "title": "AI Content Suggestions",
+      "description": "Get automated recommendations for new topics or course improvements.",
+      "icon": "FaRobot"
+    },
+    {
+      "title": "Community Engagement",
+      "description": "Host instructor blogs, AMA (Ask Me Anything) sessions, and discussion groups.",
+      "icon": "FaUsers"
+    }
+  ]
+}

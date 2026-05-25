@@ -1,0 +1,39 @@
+{
+  "name": "edtech-platform",
+  "version": "1.0.0",
+  "description": "EdTech Platform - Full-Stack Monorepo (React Frontend + Node.js/Express Backend + Supabase)",
+  "private": true,
+  "scripts": {
+    "frontend": "cd frontend && npm start",
+    "backend": "cd backend && npm run dev",
+    "dev": "concurrently -n \"frontend,backend\" -c \"bgBlue,bgYellow\" \"npm run frontend\" \"npm run backend\"",
+    "start": "npm run dev",
+    "kill-ports": "powershell -Command \"@(3000,4000) | ForEach-Object { $port=$_; netstat -ano | Select-String \\\":$port \\\" | ForEach-Object { $pid=($_ -split '\\\\s+')[-1]; if($pid -match '^\\\\d+$' -and $pid -ne 0){ Stop-Process -Id $pid -Force -EA SilentlyContinue; Write-Host \\\"Killed port $port (PID $pid)\\\" } } }\"",
+    "fresh": "npm run kill-ports && npm run dev",
+    "install:all": "cd frontend && npm install && cd ../backend && npm install",
+    "build": "cd frontend && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "dependencies": {
+    "@pinecone-database/pinecone": "^6.1.4",
+    "dotenv": "^17.4.2"
+  },
+  "overrides": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-is": "18.3.1",
+    "react-scripts": {
+      "react": "18.3.1",
+      "react-dom": "18.3.1"
+    },
+    "use-sync-external-store": {
+      "react": "18.3.1"
+    }
+  }
+}
