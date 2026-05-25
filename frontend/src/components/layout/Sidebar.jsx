@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useUIStore } from '../../store/uiStore';
 import { Menu, X, ChevronLeft } from 'lucide-react';
 
 export default function Sidebar({ children, logo, userBlock }) {
-  const { sidebarCollapsed, toggleSidebar, setSidebarCollapsed } = useUIStore();
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const toggleSidebar = useCallback(() => setSidebarCollapsed((prev) => !prev), []);
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   useEffect(() => {

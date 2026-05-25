@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { useAuthStore } from "../../stores/authStore";
+import { useSelector } from "react-redux";
 import InstructorSidebar from "../../components/layout/InstructorSidebar";
 import Card from "../../components/ui/Card";
 import { Users, DollarSign, BookOpen, Star } from "lucide-react";
 
 export default function InstructorDashboard() {
-  const { user, getProfile } = useAuthStore();
+  const { user } = useSelector((state) => state.profile);
   
   const stats = [
     { label: "Total Students", value: "1,248", icon: Users, color: "text-blue-400" },
