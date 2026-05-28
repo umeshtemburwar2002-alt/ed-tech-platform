@@ -78,7 +78,7 @@ let _lastAppliedAccessToken = null;
 // ─── core session handler ────────────────────────────────────────────────────
  
 async function applySession(event, session, dispatch) {
-  console.log("[syncSupabaseSession] applySession called:', {
+  console.log("[syncSupabaseSession] applySession called:", {
     event,
     hasSession: !!session,
     hasToken: !!session?.access_token,
@@ -117,7 +117,7 @@ async function applySession(event, session, dispatch) {
     (userId === _lastProcessedUserId && event === _lastProcessedEvent) ||
     redundantSignedIn
   ) {
-    console.log("[syncSupabaseSession] Skipping duplicate session application:', {
+    console.log("[syncSupabaseSession] Skipping duplicate session application:", {
       inFlight: _applySessionInFlight,
       sameEvent: userId === _lastProcessedUserId && event === _lastProcessedEvent,
       redundantSignedIn
@@ -130,7 +130,7 @@ async function applySession(event, session, dispatch) {
   _lastProcessedEvent      = event;
  
   try {
-    console.log("[syncSupabaseSession] Processing session for user:', userId);
+    console.log("[syncSupabaseSession] Processing session for user:", userId);
 
     // ── 4. Always set token immediately so UI doesn't flash logged-out ──────
     dispatch(setToken(session.access_token));
@@ -141,7 +141,7 @@ async function applySession(event, session, dispatch) {
     const profile = await fetchProfileWithTimeout(userId);
     
     if (profile) {
-      console.log("[syncSupabaseSession] ✅ Profile fetched:', {
+      console.log("[syncSupabaseSession] ✅ Profile fetched:", {
         id: profile.id,
         email: profile.email,
         accountType: profile.account_type
@@ -162,7 +162,7 @@ async function applySession(event, session, dispatch) {
       return;
     }
  
-    console.log("[syncSupabaseSession] ✅ App user built:', {
+    console.log("[syncSupabaseSession] ✅ App user built:", {
       id: appUser.id,
       email: appUser.email,
       accountType: appUser.accountType,
@@ -201,7 +201,7 @@ export function subscribeSupabaseAuthToStore(dispatch) {
       const { data: { session } } = await supabase.auth.getSession();
       
       if (session) {
-        console.log("[syncSupabaseSession] ✅ Initial session found for user:', session.user.id);
+        console.log("[syncSupabaseSession] ✅ Initial session found for user:", session.user.id);
       } else {
         console.log("[syncSupabaseSession] No initial session found");
       }
@@ -241,7 +241,7 @@ export function subscribeSupabaseAuthToStore(dispatch) {
     console.log("[syncSupabaseSession] Registering auth state change listener...");
     
     const { data } = supabase.auth.onAuthStateChange(async (event, session) => {
-      console.log("[syncSupabaseSession] Auth state changed:', event);
+      console.log("[syncSupabaseSession] Auth state changed:", event);
       
       if (event === "INITIAL_SESSION") {
         if (!disposed) {
@@ -311,7 +311,7 @@ export async function performLogout(dispatch, navigate) {
     await supabase.auth.signOut({ scope: "global" });
     console.log("[syncSupabaseSession] ✅ Supabase signOut successful");
   } catch (err) {
-    console.warn("[syncSupabaseSession] ⚠️ Supabase signOut error (continuing):', err);
+    console.warn("[syncSupabaseSession] ⚠️ Supabase signOut error (continuing):", err);
     // ignore signOut errors — we clear local state regardless
   }
  
