@@ -176,7 +176,7 @@ async function applySession(event, session, dispatch) {
     console.log("[syncSupabaseSession] ✅ Session applied successfully");
 
   } catch (err) {
-    console.error("[syncSupabaseSession] ❌ Error in applySession:', err);
+    console.error("[syncSupabaseSession] ❌ Error in applySession:", err);
   } finally {
     _applySessionInFlight = false;
   }
@@ -208,7 +208,7 @@ export function subscribeSupabaseAuthToStore(dispatch) {
       
       await applySession("INITIAL_SESSION", session, dispatch);
     } catch (err) {
-      console.error("[syncSupabaseSession] ❌ initializeAuth error:', err);
+      console.error("[syncSupabaseSession] ❌ initializeAuth error:", err);
     } finally {
       if (!disposed) {
         dispatch(setAuthInitialized(true));
@@ -253,7 +253,7 @@ export function subscribeSupabaseAuthToStore(dispatch) {
       try {
         await applySession(event, session, dispatch);
       } catch (err) {
-        console.error("[syncSupabaseSession] ❌ applySession error:', err);
+        console.error("[syncSupabaseSession] ❌ applySession error:", err);
       } finally {
         if (!disposed) {
           dispatch(setAuthInitialized(true));

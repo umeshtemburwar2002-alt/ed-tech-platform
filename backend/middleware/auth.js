@@ -174,7 +174,7 @@ exports.verifyEnrollment = async (req, res, next) => {
         const courseId = req.params.courseId || req.body.courseId || req.query.courseId;
         const userId = req.user.id;
 
-        console.log("[verifyEnrollment] Checking access for:', {
+        console.log("[verifyEnrollment] Checking access for:", {
             courseId,
             userId,
             userRole: req.user?.accountType
@@ -204,14 +204,14 @@ exports.verifyEnrollment = async (req, res, next) => {
         const { data: course, error: courseError } = await query.maybeSingle();
 
         if (courseError || !course) {
-            console.warn("[verifyEnrollment] Course not found:', courseId);
+            console.warn("[verifyEnrollment] Course not found:", courseId);
             return res.status(404).json({
                 success: false,
                 message: "Course not found"
             });
         }
 
-        console.log("[verifyEnrollment] Course found:', {
+        console.log("[verifyEnrollment] Course found:", {
             courseId: course.id,
             isFree: course.is_free,
             price: course.price,
@@ -244,7 +244,7 @@ exports.verifyEnrollment = async (req, res, next) => {
             .maybeSingle();
 
         if (enrollError) {
-            console.error("[verifyEnrollment] Error fetching enrollment:', enrollError);
+            console.error("[verifyEnrollment] Error fetching enrollment:", enrollError);
         }
 
         if (!enrollment) {
@@ -255,7 +255,7 @@ exports.verifyEnrollment = async (req, res, next) => {
             });
         }
 
-        console.log("[verifyEnrollment] Enrollment found:', {
+        console.log("[verifyEnrollment] Enrollment found:", {
             enrollmentId: enrollment.id,
             enrollmentType: enrollment.enrollment_type,
             paymentStatus: enrollment.payment_status,
@@ -268,7 +268,7 @@ exports.verifyEnrollment = async (req, res, next) => {
                           enrollment.payment_status === 'paid';
                           
         if (!paymentOk) {
-            console.warn("[verifyEnrollment] ❌ Payment not completed:', enrollment.payment_status);
+            console.warn("[verifyEnrollment] ❌ Payment not completed:", enrollment.payment_status);
             return res.status(403).json({
                 success: false,
                 message: "Access Denied. Your payment status for this course is incomplete."
@@ -280,7 +280,7 @@ exports.verifyEnrollment = async (req, res, next) => {
         req.enrollment = enrollment;
         next();
     } catch (error) {
-        console.error("[verifyEnrollment] ❌ Error:', error);
+        console.error("[verifyEnrollment] ❌ Error:", error);
         return res.status(500).json({
             success: false,
             message: "Failed to verify enrollment status",
